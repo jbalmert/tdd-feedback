@@ -14,3 +14,7 @@ Just being able to express the test scenario has forced several decisions.  I'm 
 
 ### Unit test of TicTacToe
 The TicTacToe game needs to accept input from the client, store the moves, evaluate the state of the game, and send state updates to the display.  That is too much responsibility for a single class, and I'm not certain how all of the responsibilites should interact just yet.  I'm making a best guess to start.  The feedback from the ensuing tests should give me feedback to correct the design as I go.  To start, I'm going to assume we need a place to store the moves.  Conceptually, we think of this as a board, so I'm going to create a Board object.  In addition, to handle understanding the game state, I'm going to create a GameEvaluator.  We already have an abstraction for the display, so I will leverage it.
+
+**storesMoveOnBoard**
+I wrote my first unit test to drive out how TicTacToe should interact with Board.  In doing so, I came up with a better metaphor for expressing what move is being made:  the Square.  It is an enum that allows each square to be uniquely named so that a column and row aren't needed.  I don't want an inconsistent set of ways to assign positions on the board, so I'm going to get rid of the concept of GameColumn and GameRow.  I also introduced the Player enum to represent X and O in the model.
+
