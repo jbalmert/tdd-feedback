@@ -52,7 +52,7 @@ public class TicTacToeEndToEndTest {
     }
 
     public void placeAndTraceO(GameColumn column, GameRow row) {
-        game.placeXOn(column, row);
+        game.placeOOn(column, row);
         snapshotBuilder.withO(column, row);
     }
 }

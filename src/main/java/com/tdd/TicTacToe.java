@@ -9,4 +9,7 @@ public class TicTacToe {
 
     public void placeXOn(GameColumn column, GameRow row) {
     }
+
+    public void placeOOn(GameColumn column, GameRow row) {
+    }
 }
