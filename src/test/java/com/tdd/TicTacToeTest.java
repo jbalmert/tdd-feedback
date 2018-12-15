@@ -44,4 +44,11 @@ public class TicTacToeTest {
 
         verify(gameEvaluator).evaluateState(board);
     }
+
+    @Test
+    public void displaysCurrentBoard() throws Exception {
+        game.place(Square.CENTER);
+
+        verify(display).show(board);
+    }
 }

@@ -14,7 +14,6 @@ public class TicTacToeEndToEndTest {
 
     @Mock
     private GameDisplay display;
-    GameSnapshotBuilder snapshotBuilder;
 
     TicTacToe game;
     private GameBoard board = new GameBoard();
@@ -28,33 +27,30 @@ public class TicTacToeEndToEndTest {
 
     @Test
     public void XWinsAGame() throws Exception {
-        snapshotBuilder = GameSnapshot.newSnapshot();
 
         placeAndTraceX(CENTER);
-        verify(display).show(snapshotBuilder.build());
+        verify(display).show(board);
 
         placeAndTraceO(RIGHT_TOP);
-        verify(display).show(snapshotBuilder.build());
+        verify(display).show(board);
 
         placeAndTraceX(MIDDLE_TOP);
-        verify(display).show(snapshotBuilder.build());
+        verify(display).show(board);
 
         placeAndTraceO(LEFT_TOP);
-        verify(display).show(snapshotBuilder.build());
+        verify(display).show(board);
 
         placeAndTraceX(MIDDLE_BOTTOM);
-        verify(display).show(snapshotBuilder.build());
+        verify(display).show(board);
 
         verify(display).xWins();
     }
 
     public void placeAndTraceX(Square square) {
         game.place(square);
-        snapshotBuilder.withX(square);
     }
 
     public void placeAndTraceO(Square square) {
         game.place(square);
-        snapshotBuilder.withO(square);
     }
 }

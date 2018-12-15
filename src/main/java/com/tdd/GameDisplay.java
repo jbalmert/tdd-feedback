@@ -1,7 +1,7 @@
 package com.tdd;
 
 public interface GameDisplay {
-    void show(GameSnapshot build);
+    void show(GameBoard build);
 
     void xWins();
 }

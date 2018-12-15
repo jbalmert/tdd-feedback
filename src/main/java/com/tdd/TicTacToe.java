@@ -17,5 +17,6 @@ public class TicTacToe {
         playerTracker.nextTurn();
         board.takeSquare(square);
         gameEvaluator.evaluateState(board);
+        display.show(board);
     }
 }
