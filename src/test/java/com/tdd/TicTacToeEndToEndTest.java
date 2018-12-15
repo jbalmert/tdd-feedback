@@ -18,10 +18,11 @@ public class TicTacToeEndToEndTest {
     GameSnapshotBuilder snapshotBuilder;
 
     TicTacToe game;
+    private GameBoard board = new GameBoard();
 
     @Before
     public void configureGame() {
-        game = new TicTacToe(display);
+        game = new TicTacToe(display, board);
     }
 
     @Test

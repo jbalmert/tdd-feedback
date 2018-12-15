@@ -6,14 +6,21 @@ import static org.mockito.Mockito.*;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.runners.MockitoJUnitRunner;
 
 
 @RunWith(MockitoJUnitRunner.class)
 public class TicTacToeTest {
 
-    @Test
-    public void name() throws Exception {
+    @Mock private GameBoard board;
+    @Mock private GameDisplay display;
 
+    @Test
+    public void storesMoveOnBoard() throws Exception {
+        TicTacToe game = new TicTacToe(display, board);
+
+        game.placeXOn(GameColumn.LEFT, GameRow.BOTTOM);
+
+        verify(board).takeSquare(Player.X, Square.LEFT_BOTTOM);
     }
 }
