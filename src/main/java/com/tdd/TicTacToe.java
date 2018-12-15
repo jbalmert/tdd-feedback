@@ -16,7 +16,7 @@ public class TicTacToe {
     public void place(Square square) {
         playerTracker.nextTurn();
         board.takeSquare(square);
-        gameEvaluator.evaluateState(board);
-        display.show(board);
+        board.evaluateState(gameEvaluator);
+        board.display(display);
     }
 }

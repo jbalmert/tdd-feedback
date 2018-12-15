@@ -42,13 +42,13 @@ public class TicTacToeTest {
     public void evaluatesGameStateAfterMove() throws Exception {
         game.place(Square.CENTER);
 
-        verify(gameEvaluator).evaluateState(board);
+        verify(board).evaluateState(gameEvaluator);
     }
 
     @Test
     public void displaysCurrentBoard() throws Exception {
         game.place(Square.CENTER);
 
-        verify(display).show(board);
+        verify(board).display(display);
     }
 }
