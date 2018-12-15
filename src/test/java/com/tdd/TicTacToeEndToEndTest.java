@@ -6,8 +6,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static com.tdd.GameRow.*;
-import static com.tdd.GameColumn.*;
+import static com.tdd.Square.*;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -29,31 +28,31 @@ public class TicTacToeEndToEndTest {
     public void XWinsAGame() throws Exception {
         snapshotBuilder = GameSnapshot.newSnapshot();
 
-        placeAndTraceX(MIDDLE, CENTER);
+        placeAndTraceX(CENTER);
         verify(display).show(snapshotBuilder.build());
 
-        placeAndTraceO(RIGHT, TOP);
+        placeAndTraceO(RIGHT_TOP);
         verify(display).show(snapshotBuilder.build());
 
-        placeAndTraceX(MIDDLE, TOP);
+        placeAndTraceX(MIDDLE_TOP);
         verify(display).show(snapshotBuilder.build());
 
-        placeAndTraceO(LEFT, TOP);
+        placeAndTraceO(LEFT_TOP);
         verify(display).show(snapshotBuilder.build());
 
-        placeAndTraceX(MIDDLE, BOTTOM);
+        placeAndTraceX(MIDDLE_BOTTOM);
         verify(display).show(snapshotBuilder.build());
 
         verify(display).xWins();
     }
 
-    public void placeAndTraceX(GameColumn column, GameRow row) {
-        game.placeXOn(column, row);
-        snapshotBuilder.withX(column, row);
+    public void placeAndTraceX(Square square) {
+        game.placeXOn(square);
+        snapshotBuilder.withX(square);
     }
 
-    public void placeAndTraceO(GameColumn column, GameRow row) {
-        game.placeOOn(column, row);
-        snapshotBuilder.withO(column, row);
+    public void placeAndTraceO(Square square) {
+        game.placeOOn(square);
+        snapshotBuilder.withO(square);
     }
 }

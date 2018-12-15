@@ -9,10 +9,10 @@ public class TicTacToe {
         this.board = board;
     }
 
-    public void placeXOn(GameColumn column, GameRow row) {
-        board.takeSquare(Player.X, Square.LEFT_BOTTOM);
+    public void placeXOn(Square square) {
+        board.takeSquare(Player.X, square);
     }
 
-    public void placeOOn(GameColumn column, GameRow row) {
+    public void placeOOn(Square square) {
     }
 }

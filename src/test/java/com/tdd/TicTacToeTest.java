@@ -19,7 +19,7 @@ public class TicTacToeTest {
     public void storesMoveOnBoard() throws Exception {
         TicTacToe game = new TicTacToe(display, board);
 
-        game.placeXOn(GameColumn.LEFT, GameRow.BOTTOM);
+        game.placeXOn(Square.LEFT_BOTTOM);
 
         verify(board).takeSquare(Player.X, Square.LEFT_BOTTOM);
     }
