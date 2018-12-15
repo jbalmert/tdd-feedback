@@ -19,10 +19,11 @@ public class TicTacToeEndToEndTest {
     TicTacToe game;
     private GameBoard board = new GameBoard();
     private GameEvaluator gameEvaluator = new GameEvaluator();
+    private PlayerTracker playerTracker = new PlayerTracker();
 
     @Before
     public void configureGame() {
-        game = new TicTacToe(display, board, gameEvaluator);
+        game = new TicTacToe(display, board, gameEvaluator, playerTracker);
     }
 
     @Test
@@ -48,12 +49,12 @@ public class TicTacToeEndToEndTest {
     }
 
     public void placeAndTraceX(Square square) {
-        game.placeXOn(square);
+        game.place(square);
         snapshotBuilder.withX(square);
     }
 
     public void placeAndTraceO(Square square) {
-        game.placeOOn(square);
+        game.place(square);
         snapshotBuilder.withO(square);
     }
 }
