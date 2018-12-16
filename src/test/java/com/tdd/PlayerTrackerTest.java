@@ -13,8 +13,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class PlayerTrackerTest {
 
-    @Mock
-    private CurrentPlayerAware currentPlayerAware;
+    @Mock private CurrentPlayerAware currentPlayerAware;
+    @Mock private CurrentPlayerAware currentPlayerAware2;
     PlayerTracker tracker = new PlayerTracker();
 
     @Test
@@ -39,5 +39,16 @@ public class PlayerTrackerTest {
         inOrder.verify(currentPlayerAware).currentPlayer(Player.X);
         inOrder.verify(currentPlayerAware).currentPlayer(Player.O);
         inOrder.verify(currentPlayerAware).currentPlayer(Player.X);
+    }
+
+    @Test
+    public void sendsCurrentPlayerToAllRegisteredObjects() throws Exception {
+        tracker.register(currentPlayerAware);
+        tracker.register(currentPlayerAware2);
+
+        tracker.nextTurn();
+
+        verify(currentPlayerAware).currentPlayer(Player.X);
+        verify(currentPlayerAware2).currentPlayer(Player.X);
     }
 }
