@@ -32,3 +32,6 @@ The PlayerTracker is responsible for keeping track of who the current player is 
 
 **initiallySignalsCurrentPlayerIsX**
 I introduced the ability to register with the PlayerTracker.  This will be my mechanism to keep all objects that need to be aware of the current player in sync.  I don't have much feedback from this test.  The design as far as it has been implemented seems to be moving in the right direction.
+
+**altenatesBetweenPlayersWithEachCallToNextTurn**
+I had to use mockito Inorder to prove that the Player toggles between X and O on each call.  Even though it's only 2 lines long, the nextTurn() method is operating at two different levels of abstraction.  The first line is calling a dependency while the second line calls a method to express the intent of the method.  I'll clean this up during the next test since I'll be modifying it there anyway.
