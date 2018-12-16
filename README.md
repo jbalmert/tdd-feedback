@@ -26,3 +26,9 @@ With this test and the design changes to accomodate it, the overall design is si
 
 **displaysCurrentBoard**
 I changed one of my design decisions from the end to end test.  I think in the end that the end to end test idea of how to express game state is closer to what I want in th end, but my unit test did not have the information to meet the needs of the end to end test.  This is a strong suggestion that there are misplaced responsibilities in the decisions I have made.  I believe I have two places that will need to be addressed.  Both involve the GameBoard.  In two different methods, I'm sending the board to another object to have some operations performed on it.  These operations will most likely involve asking the board to expose some of its internal state to the game evaluator and the display object.  This can be done (and frequently is) but it leads to tightly coupled objects.  It would be harder to change the implementation of the Board object without risking breaking the implementations of upstream objects.  To avoid this, I need to move the operations on the data as close to the data as possible.  That means inverting the relationship of these objects and allow the Board to send information to the GameEvaluator and the GameDisplay.  I'm going to make this change next to avoid complications downstream.
+
+### Unit test of PlayerTracker
+The PlayerTracker is responsible for keeping track of who the current player is and updating other interested objects when that changes.
+
+**initiallySignalsCurrentPlayerIsX**
+I introduced the ability to register with the PlayerTracker.  This will be my mechanism to keep all objects that need to be aware of the current player in sync.  I don't have much feedback from this test.  The design as far as it has been implemented seems to be moving in the right direction.
