@@ -51,3 +51,7 @@ The PlayerToggle will toggle between X and O on each call to nextPlayer().  The 
 
 **togglesBetweenXAndOWithEachCall**  I now need to track the current player and update it with each call.  I created calcuateNextPlayer() to handle the details.  Then I returned the new currentPlayer.  The iplementation feels simple and clean, so I don't feel any need to change the code further.
 
+### Unit test of PlayerBroadcaster
+the PlayerBroadcaster will send the next currentPlayer to all registered listeners.
+
+**sendsCurrentPlayerToAllListeners**  I created the register method to add listeners.  The implementation of broadcastCurrentPlayer() loops over all the registered listeners and sends the current player. This implementation is fairly straightforward, so I don't see any need to change the code further.
