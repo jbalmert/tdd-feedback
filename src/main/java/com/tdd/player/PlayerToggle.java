@@ -1,4 +1,4 @@
-package com.tdd;
+package com.tdd.player;
 
 public class PlayerToggle {
     Player currentPlayer = Player.O;

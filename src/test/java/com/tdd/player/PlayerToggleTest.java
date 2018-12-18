@@ -1,7 +1,9 @@
-package com.tdd;
+package com.tdd.player;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
+import com.tdd.player.Player;
+import com.tdd.player.PlayerToggle;
 import org.junit.Test;
 
 

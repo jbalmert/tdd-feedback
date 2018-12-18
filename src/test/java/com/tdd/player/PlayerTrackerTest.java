@@ -1,8 +1,12 @@
-package com.tdd;
+package com.tdd.player;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
+import com.tdd.player.Player;
+import com.tdd.player.PlayerBroadcaster;
+import com.tdd.player.PlayerToggle;
+import com.tdd.player.PlayerTracker;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
