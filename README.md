@@ -43,3 +43,11 @@ I cleaned up the nextTurn method.  Now both lines call descriptive methods.  How
 I wiped out the implementation and tests for the PlayerTracker and will try again.
 
 I quickly reimplemented the PlayerTracker.  This time I introduced the PlayerToggle and PlayerBroadcaster abstractions to handle the responsibilities the PlayerTracker handled all by itself in the previous implementation.  The resulting code is kept at a single level of abstraction.  This is complete overkill for Tic Tac Toe where the requirements aren't going to change.  But in an enterprise app, where requirements are going to change in unexpected ways, this level of decomposition is absolutely worth the effort.
+
+### Unit test of PlayerToggle
+The PlayerToggle will toggle between X and O on each call to nextPlayer().  The first call will return X.
+
+**returnsPlayerXOnFirstCall** Simple to implement.  Just return Player X.
+
+**togglesBetweenXAndOWithEachCall**  I now need to track the current player and update it with each call.  I created calcuateNextPlayer() to handle the details.  Then I returned the new currentPlayer.  The iplementation feels simple and clean, so I don't feel any need to change the code further.
+
