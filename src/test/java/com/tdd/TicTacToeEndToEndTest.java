@@ -18,7 +18,9 @@ public class TicTacToeEndToEndTest {
     TicTacToe game;
     private GameBoard board = new GameBoard();
     private GameEvaluator gameEvaluator = new GameEvaluator();
-    private PlayerTracker playerTracker = new PlayerTracker();
+    private PlayerToggle playerToggle = new PlayerToggle();
+    private PlayerBroadcaster playerBroadcaster = new PlayerBroadcaster();
+    private PlayerTracker playerTracker = new PlayerTracker(playerToggle, playerBroadcaster);
 
     @Before
     public void configureGame() {

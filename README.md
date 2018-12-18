@@ -41,3 +41,5 @@ I cleaned up the nextTurn method.  Now both lines call descriptive methods.  How
 
 ### Unit test of PlayerTracker (second try)
 I wiped out the implementation and tests for the PlayerTracker and will try again.
+
+I quickly reimplemented the PlayerTracker.  This time I introduced the PlayerToggle and PlayerBroadcaster abstractions to handle the responsibilities the PlayerTracker handled all by itself in the previous implementation.  The resulting code is kept at a single level of abstraction.  This is complete overkill for Tic Tac Toe where the requirements aren't going to change.  But in an enterprise app, where requirements are going to change in unexpected ways, this level of decomposition is absolutely worth the effort.
