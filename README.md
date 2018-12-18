@@ -38,3 +38,6 @@ I had to use mockito Inorder to prove that the Player toggles between X and O on
 
 **sendsCurrentPlayerToAllRegisteredObjects**
 I cleaned up the nextTurn method.  Now both lines call descriptive methods.  However, even with the method cleaned up, I now have this class handling two distinct responsibilities:  notifying listeners of current player and toggling the current player.  It's not a huge added complexity, but it is something that should be addressed.  I'm going to extract those responsibilities and let the PlayerTracker collaborate with them.
+
+### Unit test of PlayerTracker (second try)
+I wiped out the implementation and tests for the PlayerTracker and will try again.
