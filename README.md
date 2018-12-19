@@ -55,3 +55,11 @@ The PlayerToggle will toggle between X and O on each call to nextPlayer().  The 
 the PlayerBroadcaster will send the next currentPlayer to all registered listeners.
 
 **sendsCurrentPlayerToAllListeners**  I created the register method to add listeners.  The implementation of broadcastCurrentPlayer() loops over all the registered listeners and sends the current player. This implementation is fairly straightforward, so I don't see any need to change the code further.
+
+### Organizing code
+I moved all the Player classes into a player package to keep the number of classes in one spot from becoming overwhelming.
+
+## Unit test of GameBoard
+The GameBoard is responsible for tracking moves.  I've already stubbed out three methods:  takeSquare(), evaluateState(), display().  It feels a bit off to need three messages to accomplish a task.  This suggests some responsibilities may be a little bit off.  I'll keep a lookout for trouble...
+
+**tracksSquaresTakenByPlayer**  Right off the bat, testing the takeSquare() method is difficult.  I'm stuck.  I want to assert/verify that when a square is taken, the GameBoard tracks it.  But, in isolation, this method only takes information in.  It does not send out any other messages.  My options are to expose the underlying storage mechanism for the GameBoard or rethink how the GameBaord works.  I am never happy with exposing data only for the purpose of testing.  So that leaves rethinking the GameBoard.
