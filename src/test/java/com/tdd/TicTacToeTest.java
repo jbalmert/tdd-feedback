@@ -15,14 +15,12 @@ import org.mockito.runners.MockitoJUnitRunner;
 public class TicTacToeTest {
 
     @Mock private GameBoard board;
-    @Mock private GameDisplay display;
-    @Mock private GameEvaluator gameEvaluator;
     @Mock private PlayerTracker playerTracker;
     private TicTacToe game;
 
     @Before
     public void configureGame() {
-        game = new TicTacToe(display, board, gameEvaluator, playerTracker);
+        game = new TicTacToe(board, playerTracker);
     }
 
     @Test
@@ -37,19 +35,5 @@ public class TicTacToeTest {
         game.place(Square.LEFT_BOTTOM);
 
         verify(board).takeSquare(Square.LEFT_BOTTOM);
-    }
-
-    @Test
-    public void evaluatesGameStateAfterMove() throws Exception {
-        game.place(Square.CENTER);
-
-        verify(board).evaluateState(gameEvaluator);
-    }
-
-    @Test
-    public void displaysCurrentBoard() throws Exception {
-        game.place(Square.CENTER);
-
-        verify(board).display(display);
     }
 }
