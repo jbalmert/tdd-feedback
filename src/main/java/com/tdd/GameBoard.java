@@ -1,16 +1,25 @@
 package com.tdd;
 
-public class GameBoard {
-    private GameEvaluator gameEvaluator;
-    private GameMoves moves;
+import com.tdd.player.Player;
 
-    public GameBoard(GameEvaluator gameEvaluator, GameMoves moves) {
-        this.gameEvaluator = gameEvaluator;
-        this.moves = moves;
+import java.util.HashMap;
+import java.util.Map;
+
+public class GameBoard implements CurrentPlayerAware {
+    private Map<Player, Squares> playerToSquares = new HashMap<>();
+    private Player currentPlayer;
+
+    public GameBoard(Squares xSquares, Squares oSquares) {
+        playerToSquares.put(Player.X, xSquares);
+        playerToSquares.put(Player.O, oSquares);
+    }
+
+    @Override
+    public void currentPlayer(Player player) {
+        currentPlayer = player;
     }
 
     public void takeSquare(Square square) {
-        moves.add(square);
-        moves.evaluate(gameEvaluator);
+        playerToSquares.get(currentPlayer).add(square);
     }
 }

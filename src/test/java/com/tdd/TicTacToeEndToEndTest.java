@@ -20,8 +20,9 @@ public class TicTacToeEndToEndTest {
 
     TicTacToe game;
     private GameEvaluator gameEvaluator = new GameEvaluator();
-    private GameMoves moves = new GameMoves();
-    private GameBoard board = new GameBoard(gameEvaluator, moves);
+    private Squares xSquares = new Squares();
+    private Squares oSquares = new Squares();
+    private GameBoard board = new GameBoard(xSquares, oSquares);
     private PlayerToggle playerToggle = new PlayerToggle();
     private PlayerBroadcaster playerBroadcaster = new PlayerBroadcaster();
     private PlayerTracker playerTracker = new PlayerTracker(playerToggle, playerBroadcaster);
