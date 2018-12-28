@@ -11,6 +11,9 @@ import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static com.tdd.Square.*;
 import static org.mockito.Mockito.*;
 
@@ -21,15 +24,16 @@ public class TicTacToeEndToEndTest {
     private GameEvents events;
 
     TicTacToe game;
-    private GameEvaluator gameEvaluator = new GameEvaluator();
-    private Squares xSquares = new Squares(gameEvaluator);
-    private Squares oSquares = new Squares(gameEvaluator);
-    private PlayerToggle playerToggle = new PlayerToggle();
-    private PlayerBroadcaster playerBroadcaster = new PlayerBroadcaster();
-    private PlayerTracker playerTracker = new PlayerTracker(playerToggle, playerBroadcaster);
+    private Set<Solution> solutions = new HashSet<>();
 
     @Before
     public void configureGame() {
+        GameEvaluator gameEvaluator = new GameEvaluator(events, solutions);
+        Squares xSquares = new Squares(gameEvaluator);
+        Squares oSquares = new Squares(gameEvaluator);
+        PlayerToggle playerToggle = new PlayerToggle();
+        PlayerBroadcaster playerBroadcaster = new PlayerBroadcaster();
+        PlayerTracker playerTracker = new PlayerTracker(playerToggle, playerBroadcaster);
         GameBoard board = new GameBoard(xSquares, oSquares, events);
         playerBroadcaster.register(board);
         game = new TicTacToe(board, playerTracker);
