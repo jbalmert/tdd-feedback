@@ -104,3 +104,7 @@ I added the Solutions object to hide the Set<Solution> operations.  This has cle
 
 ## Unit test of Solutions
 The Solutions object exists to iterate over all the Solution objects and determine if there is a match to the curent set of Squares.
+
+## Unit test of Solution
+Each solution holds a permutation of a valid solution.  If the target set of squares contains all of the squares from the solution set, it is a match.
+Now, to add in the valid solutions to the end to end test and finish the first scenario.
