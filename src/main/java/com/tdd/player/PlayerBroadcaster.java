@@ -1,7 +1,5 @@
 package com.tdd.player;
 
-import com.tdd.CurrentPlayerAware;
-
 import java.util.ArrayList;
 import java.util.List;
 

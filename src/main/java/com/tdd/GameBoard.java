@@ -1,5 +1,6 @@
 package com.tdd;
 
+import com.tdd.player.CurrentPlayerAware;
 import com.tdd.player.Player;
 
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.tdd;
+package com.tdd.player;
 
 import com.tdd.player.Player;
 
