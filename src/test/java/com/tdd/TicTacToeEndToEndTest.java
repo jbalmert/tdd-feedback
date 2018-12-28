@@ -25,10 +25,22 @@ public class TicTacToeEndToEndTest {
 
     TicTacToe game;
 
+    private Solutions buildValidSolutions() {
+        Set<Solution> solutionSet = new HashSet<>();
+        solutionSet.add(new Solution(LEFT_TOP, MIDDLE_TOP, RIGHT_TOP));
+        solutionSet.add(new Solution(LEFT_MIDDLE, CENTER, RIGHT_MIDDLE));
+        solutionSet.add(new Solution(LEFT_BOTTOM, MIDDLE_BOTTOM, RIGHT_BOTTOM));
+        solutionSet.add(new Solution(LEFT_TOP, LEFT_MIDDLE, LEFT_BOTTOM));
+        solutionSet.add(new Solution(MIDDLE_TOP, CENTER, MIDDLE_BOTTOM));
+        solutionSet.add(new Solution(RIGHT_TOP, RIGHT_MIDDLE, RIGHT_BOTTOM));
+        solutionSet.add(new Solution(LEFT_TOP, CENTER, RIGHT_BOTTOM));
+        solutionSet.add(new Solution(LEFT_BOTTOM, CENTER, RIGHT_TOP));
+        return new Solutions(solutionSet);
+    }
+
     @Before
     public void configureGame() {
-        Set<Solution> solutionSet = new HashSet<>();
-        Solutions solutions = new Solutions(solutionSet);
+        Solutions solutions = buildValidSolutions();
         GameEvaluator gameEvaluator = new GameEvaluator(events, solutions);
         Squares xSquares = new Squares(gameEvaluator);
         Squares oSquares = new Squares(gameEvaluator);
@@ -53,8 +65,8 @@ public class TicTacToeEndToEndTest {
         inOrder.verify(events).move(Player.O, RIGHT_TOP);
         inOrder.verify(events).move(Player.X, MIDDLE_TOP);
         inOrder.verify(events).move(Player.O, LEFT_TOP);
-        inOrder.verify(events).move(Player.X, MIDDLE_BOTTOM);
         inOrder.verify(events).xWins();
+        inOrder.verify(events).move(Player.X, MIDDLE_BOTTOM);
     }
 
 }
