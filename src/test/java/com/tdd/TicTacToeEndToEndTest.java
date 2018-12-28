@@ -24,10 +24,10 @@ public class TicTacToeEndToEndTest {
     private GameEvents events;
 
     TicTacToe game;
-    private Set<Solution> solutions = new HashSet<>();
 
     @Before
     public void configureGame() {
+        Solutions solutions = new Solutions();
         GameEvaluator gameEvaluator = new GameEvaluator(events, solutions);
         Squares xSquares = new Squares(gameEvaluator);
         Squares oSquares = new Squares(gameEvaluator);

@@ -19,22 +19,19 @@ import static com.tdd.Square.*;
 public class GameEvaluatorTest {
 
     @Mock private GameEvents events;
-    @Mock Solution solution1;
+    @Mock Solutions solutions;
     @Mock Solution solution2;
-    private Set<Solution> solutions = new HashSet<>();
+
     GameEvaluator evaluator;
 
     @Before
     public void configureEvaluator() {
-        solutions.add(solution1);
-        solutions.add(solution2);
         evaluator = new GameEvaluator(events, solutions);
     }
 
     @Test
     public void sendsXWinsIfAnySolutionMatches() throws Exception {
-        when(solution1.matches(anySetOf(Square.class))).thenReturn(true);
-        when(solution2.matches(anySetOf(Square.class))).thenReturn(false);
+        when(solutions.matches(anySetOf(Square.class))).thenReturn(true);
 
         evaluator.evaluate(setOf(MIDDLE_BOTTOM, MIDDLE_TOP, CENTER));
 
@@ -43,8 +40,7 @@ public class GameEvaluatorTest {
 
     @Test
     public void doesNothingWhenNoSolutionMatches() throws Exception {
-        when(solution1.matches(anySetOf(Square.class))).thenReturn(false);
-        when(solution2.matches(anySetOf(Square.class))).thenReturn(false);
+        when(solutions.matches(anySetOf(Square.class))).thenReturn(false);
 
         evaluator.evaluate(setOf(MIDDLE_BOTTOM, MIDDLE_TOP, CENTER));
 
