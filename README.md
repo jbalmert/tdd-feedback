@@ -80,4 +80,6 @@ I pushed down too much of the responsibility of the GameBoard to the GameMoves o
 
 The new implementation looks like it hits the right balance point.  The GameBoard's responsibility it to route a players move to the correct collection of Squares.  It has to be CurrentPlayerAware again, but it does not own the responsibility of evaluating player moves.  That will be pushed down to the Squares object.
 
+## Unit test of Squares
+The Squares object is responsible for holding onto Square objects for a Player and evaluating the state of the game after a new Square is added.
 

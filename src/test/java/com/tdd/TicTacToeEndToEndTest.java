@@ -20,8 +20,8 @@ public class TicTacToeEndToEndTest {
 
     TicTacToe game;
     private GameEvaluator gameEvaluator = new GameEvaluator();
-    private Squares xSquares = new Squares();
-    private Squares oSquares = new Squares();
+    private Squares xSquares = new Squares(gameEvaluator);
+    private Squares oSquares = new Squares(gameEvaluator);
     private GameBoard board = new GameBoard(xSquares, oSquares);
     private PlayerToggle playerToggle = new PlayerToggle();
     private PlayerBroadcaster playerBroadcaster = new PlayerBroadcaster();
@@ -29,6 +29,7 @@ public class TicTacToeEndToEndTest {
 
     @Before
     public void configureGame() {
+        playerBroadcaster.register(board);
         game = new TicTacToe(board, playerTracker);
     }
 
