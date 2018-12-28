@@ -22,7 +22,7 @@ public class GameBoard implements CurrentPlayerAware {
     }
 
     public void takeSquare(Square square) {
-        playerToSquares.get(currentPlayer).add(square);
         events.move(currentPlayer, square);
+        playerToSquares.get(currentPlayer).add(square);
     }
 }

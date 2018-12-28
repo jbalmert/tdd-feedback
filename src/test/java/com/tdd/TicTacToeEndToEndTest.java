@@ -65,8 +65,8 @@ public class TicTacToeEndToEndTest {
         inOrder.verify(events).move(Player.O, RIGHT_TOP);
         inOrder.verify(events).move(Player.X, MIDDLE_TOP);
         inOrder.verify(events).move(Player.O, LEFT_TOP);
-        inOrder.verify(events).xWins();
         inOrder.verify(events).move(Player.X, MIDDLE_BOTTOM);
+        inOrder.verify(events).xWins();
     }
 
 }
