@@ -16,10 +16,11 @@ public class GameBoardTest {
 
     @Mock private Squares xSquares;
     @Mock private Squares oSquares;
+    @Mock private GameEvents events;
 
     @Test
     public void addsSquareToXSquaresWhenCurrentPlayerIsX() throws Exception {
-        GameBoard board = new GameBoard(xSquares, oSquares);
+        GameBoard board = new GameBoard(xSquares, oSquares, events);
         board.currentPlayer(Player.X);
 
         board.takeSquare(Square.CENTER);
@@ -29,11 +30,21 @@ public class GameBoardTest {
 
     @Test
     public void addsSquareToOSquaresWhenCurrentPlayerIsO() throws Exception {
-        GameBoard board = new GameBoard(xSquares, oSquares);
+        GameBoard board = new GameBoard(xSquares, oSquares, events);
         board.currentPlayer(Player.O);
 
         board.takeSquare(Square.CENTER);
 
         verify(oSquares).add(Square.CENTER);
+    }
+
+    @Test
+    public void sendsMoveEventWhenSquareIsTaken() throws Exception {
+        GameBoard board = new GameBoard(xSquares, oSquares, events);
+        board.currentPlayer(Player.X);
+
+        board.takeSquare(Square.LEFT_BOTTOM);
+
+        verify(events).move(Player.X, Square.LEFT_BOTTOM);
     }
 }

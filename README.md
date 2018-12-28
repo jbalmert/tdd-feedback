@@ -83,3 +83,18 @@ The new implementation looks like it hits the right balance point.  The GameBoar
 ## Unit test of Squares
 The Squares object is responsible for holding onto Square objects for a Player and evaluating the state of the game after a new Square is added.
 
+### GameDisplay revisted
+In my end to end test I have several verifications of the GameDisplay being told to show the board.  This is a little presumptuous and is rooted my original thought of implementing the app as a command line interactive application.  Now that it is simply a library to play a game of TicTacToe it makes sense to think of the messages being sent back to the client as events rather than display commands.  I don't like the idea of sharing an internal domain concept with the client.  It would give them the option to interact with system inappropriately.  I think for now I will simply send an event specifying a player taking a square.  Later when we get to error checking, I may also send an event with remaining valid squares as the same time.
+
+## Updating TicTacToeEndToEndTest
+**XWinsAGame** 
+I need to drive out the expected behaviors of the events.  I am rebuilding this test to hopefully be more readable.
+
+## Unit test of GameBoard (just adding the move event)
+As each move is made, the GameBoard now sends a move event to the client.
+
+## TicTacToeEndToEndTest
+I just made significant progress towards finishing the first end to end test.  When I run the test instead of failing at the first event verification, I am now failing at the last one: XWins.  To make that work I need to implement the game evaluation functionality.
+
+## GameEvaluator
+After each move, the evaluator will receive a set of all the moves made by the current player, including the latest move.  It is the job of the Evaluator to determine if a subset of the squares matches a winning solution, an XWins, OWins, or draw event should be fired off if warranted.  Otherwise, it does nothing.  The end to end test only defines the need for the Xwins event, so I will limit the implementation to that until another scenario forces me to add more.  To simplify my life, it is important to note that there are only 8 valid winning solutions in classic TicTacToe: 3 columns, 3 rows, 2 diagonals.  I can model these solutions directly.  If the game were designed to be a 4x4 or 5x5 grid, I would consider dynamically permuting all the solutions rather than hard coding them.
