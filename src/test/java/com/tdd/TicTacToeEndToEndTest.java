@@ -27,7 +27,8 @@ public class TicTacToeEndToEndTest {
 
     @Before
     public void configureGame() {
-        Solutions solutions = new Solutions();
+        Set<Solution> solutionSet = new HashSet<>();
+        Solutions solutions = new Solutions(solutionSet);
         GameEvaluator gameEvaluator = new GameEvaluator(events, solutions);
         Squares xSquares = new Squares(gameEvaluator);
         Squares oSquares = new Squares(gameEvaluator);

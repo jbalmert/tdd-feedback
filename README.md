@@ -101,3 +101,6 @@ After each move, the evaluator will receive a set of all the moves made by the c
 
 **sendsXWinsIfAnySolutionMatches** There should be one or zero solutions that match.  I've introduced a Set<Solution> to represent the valid solutions for the game.  To evaluate, the set of moves sent in is sent to each Solution to see if there is a match.  If so, the xWins event is triggered.  Otherwise, nothing happens.  This implementation is slightly clumsier than the rest of my code.  I suspect it could be simplified with an abstraction to hide the Set<Solution>.
 I added the Solutions object to hide the Set<Solution> operations.  This has cleaned up the implementation somewhat.
+
+## Unit test of Solutions
+The Solutions object exists to iterate over all the Solution objects and determine if there is a match to the curent set of Squares.
