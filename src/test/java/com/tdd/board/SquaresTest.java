@@ -1,4 +1,4 @@
-package com.tdd;
+package com.tdd.board;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.*;

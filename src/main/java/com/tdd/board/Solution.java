@@ -1,4 +1,4 @@
-package com.tdd;
+package com.tdd.board;
 
 import java.util.HashSet;
 import java.util.Set;

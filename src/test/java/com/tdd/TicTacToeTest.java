@@ -3,6 +3,8 @@ package com.tdd;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
+import com.tdd.board.GameBoard;
+import com.tdd.board.Square;
 import com.tdd.player.PlayerTracker;
 import org.junit.Before;
 import org.junit.Test;

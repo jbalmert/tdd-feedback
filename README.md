@@ -110,4 +110,4 @@ Each solution holds a permutation of a valid solution.  If the target set of squ
 Now, to add in the valid solutions to the end to end test and finish the first scenario.
 
 ### Cleanup & Organization
-The GameSnapshot and builder are not being used.  If I need them later, I'll bring them back.  For now they are going away.  Next, the CurrentPlayerAware interface belongs in the player package.
+The GameSnapshot and builder are not being used.  If I need them later, I'll bring them back.  For now they are going away.  Next, the CurrentPlayerAware interface belongs in the player package.  

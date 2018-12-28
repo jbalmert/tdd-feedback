@@ -1,4 +1,4 @@
-package com.tdd;
+package com.tdd.board;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -9,7 +9,7 @@ import org.mockito.Mock;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static com.tdd.Square.*;
+import static com.tdd.board.Square.*;
 import java.util.HashSet;
 import java.util.Set;
 

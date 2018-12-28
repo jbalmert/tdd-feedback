@@ -1,5 +1,7 @@
 package com.tdd;
 
+import com.tdd.board.GameBoard;
+import com.tdd.board.Square;
 import com.tdd.player.PlayerTracker;
 
 public class TicTacToe {

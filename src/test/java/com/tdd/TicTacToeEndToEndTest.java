@@ -1,5 +1,6 @@
 package com.tdd;
 
+import com.tdd.board.*;
 import com.tdd.player.Player;
 import com.tdd.player.PlayerBroadcaster;
 import com.tdd.player.PlayerToggle;
@@ -14,7 +15,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.tdd.Square.*;
+import static com.tdd.board.Square.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)

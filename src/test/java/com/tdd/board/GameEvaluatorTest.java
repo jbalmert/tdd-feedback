@@ -1,8 +1,9 @@
-package com.tdd;
+package com.tdd.board;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
+import com.tdd.board.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -12,15 +13,17 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.tdd.Square.*;
+import static com.tdd.board.Square.*;
 
 
 @RunWith(MockitoJUnitRunner.class)
 public class GameEvaluatorTest {
 
     @Mock private GameEvents events;
-    @Mock Solutions solutions;
-    @Mock Solution solution2;
+    @Mock
+    Solutions solutions;
+    @Mock
+    Solution solution2;
 
     GameEvaluator evaluator;
 

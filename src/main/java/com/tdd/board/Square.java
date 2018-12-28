@@ -1,4 +1,4 @@
-package com.tdd;
+package com.tdd.board;
 
 public enum Square {
     LEFT_BOTTOM,

@@ -1,4 +1,4 @@
-package com.tdd;
+package com.tdd.board;
 
 import com.tdd.player.CurrentPlayerAware;
 import com.tdd.player.Player;
