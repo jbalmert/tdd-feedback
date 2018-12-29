@@ -50,6 +50,7 @@ public class TicTacToeEndToEndTest {
         PlayerTracker playerTracker = new PlayerTracker(playerToggle, playerBroadcaster);
         GameBoard board = new GameBoard(xSquares, oSquares, events);
         playerBroadcaster.register(board);
+        playerBroadcaster.register(gameEvaluator);
         game = new TicTacToe(board, playerTracker);
     }
 
@@ -67,7 +68,25 @@ public class TicTacToeEndToEndTest {
         inOrder.verify(events).move(Player.X, MIDDLE_TOP);
         inOrder.verify(events).move(Player.O, LEFT_TOP);
         inOrder.verify(events).move(Player.X, MIDDLE_BOTTOM);
-        inOrder.verify(events).xWins();
+        inOrder.verify(events).wins(Player.X);
     }
 
+    @Test
+    public void OWinsGame() {
+        game.place(RIGHT_TOP);
+        game.place(CENTER);
+        game.place(RIGHT_BOTTOM);
+        game.place(MIDDLE_TOP);
+        game.place(LEFT_TOP);
+        game.place(MIDDLE_BOTTOM);
+
+        InOrder inOrder = inOrder(events);
+        inOrder.verify(events).move(Player.X, RIGHT_TOP);
+        inOrder.verify(events).move(Player.O, CENTER);
+        inOrder.verify(events).move(Player.X, RIGHT_BOTTOM);
+        inOrder.verify(events).move(Player.O, MIDDLE_TOP);
+        inOrder.verify(events).move(Player.X, LEFT_TOP);
+        inOrder.verify(events).move(Player.O, MIDDLE_BOTTOM);
+        inOrder.verify(events).wins(Player.O);
+    }
 }
