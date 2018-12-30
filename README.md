@@ -115,3 +115,8 @@ The GameSnapshot and builder are not being used.  If I need them later, I'll bri
 ## Scenario 2
 **OWinsAGame**
 The next obvious scenario is to prove that O can win.  This should go much faster since I've put in place a lot of the infrastructure.  It looks like I'm already to the last step.  I need to make the win event trigger.
+And that was all it took to get the second scenario working.
+
+## Scenario 3
+**GameEndsInADraw**
+When the ninth move is made and no one has won, the game is declared a draw.  Implementing this won't be difficult, but I don't think I've modelled the GameEvaluator to handle this very cleanly.  I'll have to add another if statement block.

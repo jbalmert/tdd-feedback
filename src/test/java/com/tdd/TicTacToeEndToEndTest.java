@@ -89,4 +89,30 @@ public class TicTacToeEndToEndTest {
         inOrder.verify(events).move(Player.O, MIDDLE_BOTTOM);
         inOrder.verify(events).wins(Player.O);
     }
+
+    @Test
+    public void gameEndsInADraw() {
+        game.place(CENTER);
+        game.place(RIGHT_TOP);
+        game.place(RIGHT_MIDDLE);
+        game.place(LEFT_MIDDLE);
+        game.place(MIDDLE_BOTTOM);
+        game.place(MIDDLE_TOP);
+        game.place(LEFT_TOP);
+        game.place(RIGHT_BOTTOM);
+        game.place(LEFT_BOTTOM);
+
+        InOrder inOrder = inOrder(events);
+        inOrder.verify(events).move(Player.X, CENTER);
+        inOrder.verify(events).move(Player.O, RIGHT_TOP);
+        inOrder.verify(events).move(Player.X, RIGHT_MIDDLE);
+        inOrder.verify(events).move(Player.O, LEFT_MIDDLE);
+        inOrder.verify(events).move(Player.X, MIDDLE_BOTTOM);
+        inOrder.verify(events).move(Player.O, MIDDLE_TOP);
+        inOrder.verify(events).move(Player.X, LEFT_TOP);
+        inOrder.verify(events).move(Player.O, RIGHT_BOTTOM);
+        inOrder.verify(events).move(Player.X, LEFT_BOTTOM);
+        inOrder.verify(events).draw();
+
+    }
 }
