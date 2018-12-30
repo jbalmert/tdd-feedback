@@ -115,4 +115,15 @@ public class TicTacToeEndToEndTest {
         inOrder.verify(events).draw();
 
     }
+
+    @Test
+    public void invalidMovesAreNotAllowed() {
+        game.place(CENTER);
+        game.place(CENTER);
+
+        InOrder inOrder = inOrder(events);
+        inOrder.verify(events).move(Player.X, CENTER);
+        inOrder.verify(events).invalidMove(Player.O, CENTER);
+    }
+
 }

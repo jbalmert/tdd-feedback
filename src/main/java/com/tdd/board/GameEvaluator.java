@@ -9,6 +9,7 @@ public class GameEvaluator implements CurrentPlayerAware {
     private GameEvents events;
     private Solutions solutions;
     private Player currentPlayer;
+    private static int MAX_PLAYER_MOVES = 5;
 
     public GameEvaluator(GameEvents events, Solutions solutions) {
         this.events = events;
@@ -19,7 +20,7 @@ public class GameEvaluator implements CurrentPlayerAware {
         boolean hasWinner = solutions.matches(squares);
         if (hasWinner) {
             events.wins(currentPlayer);
-        } else if (squares.size() == 5) {
+        } else if (squares.size() == MAX_PLAYER_MOVES) {
             events.draw();
         }
     }

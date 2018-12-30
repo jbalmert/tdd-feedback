@@ -120,3 +120,10 @@ And that was all it took to get the second scenario working.
 ## Scenario 3
 **GameEndsInADraw**
 When the ninth move is made and no one has won, the game is declared a draw.  Implementing this won't be difficult, but I don't think I've modelled the GameEvaluator to handle this very cleanly.  I'll have to add another if statement block.
+
+## Layering in new responsibilities not accounted for before...
+Up to now, I've only dealt with happy path functionality.  That is, how should the software behave when everything is going right.  Now I want to explore what happens when something goes wrong.  The current solution does nothing to validate input.  I didn't make any guesses along the way on where I want that responsibility to live.  By acting on the feedback on the design of my code from my tests, I am confident that the code I've written is as ready for extension with minimal modification as I can reasonably make it.  Let's put it to the test.  I'm going to add two distinct scenarios:  invalid moves and moves after the game is over.
+
+## Scenario 4
+**InvalidMovesAreNotAllowed**
+I already limit the moves that can be made to 9 (technically 10 if a client decided to send null).  I want to prove that a square can only be taken once during a game.  When an attempt to take a square more than once happens, I want an invalidMove event to occur.  The event should include the player and square.
