@@ -19,6 +19,8 @@ public class GameEvaluator implements CurrentPlayerAware {
         boolean hasWinner = solutions.matches(squares);
         if (hasWinner) {
             events.wins(currentPlayer);
+        } else if (squares.size() == 5) {
+            events.draw();
         }
     }
 

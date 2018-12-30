@@ -34,13 +34,23 @@ public class GameEvaluatorTest {
     }
 
     @Test
-    public void sendsXWinsIfAnySolutionMatches() throws Exception {
+    public void sendsWinEventIfAnySolutionMatches() throws Exception {
         when(solutions.matches(anySetOf(Square.class))).thenReturn(true);
         evaluator.currentPlayer(Player.X);
 
         evaluator.evaluate(setOf(MIDDLE_BOTTOM, MIDDLE_TOP, CENTER));
 
         verify(events).wins(Player.X);
+    }
+
+    @Test
+    public void sendsDrawEventwhenNoSolutionMatchesAndAllMovesTaken() {
+        when(solutions.matches(anySetOf(Square.class))).thenReturn(false);
+        evaluator.currentPlayer(Player.X);
+
+        evaluator.evaluate(setOf(LEFT_TOP, LEFT_BOTTOM, CENTER, MIDDLE_BOTTOM, RIGHT_MIDDLE));
+
+        verify(events).draw();
     }
 
     @Test
