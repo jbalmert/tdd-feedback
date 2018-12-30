@@ -3,7 +3,7 @@ package com.tdd;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
-import com.tdd.board.GameBoard;
+import com.tdd.board.PlayingGameBoard;
 import com.tdd.board.Square;
 import com.tdd.player.PlayerTracker;
 import org.junit.Before;
@@ -16,7 +16,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class TicTacToeTest {
 
-    @Mock private GameBoard board;
+    @Mock private PlayingGameBoard board;
     @Mock private PlayerTracker playerTracker;
     private TicTacToe game;
 

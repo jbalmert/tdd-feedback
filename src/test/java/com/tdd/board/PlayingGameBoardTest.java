@@ -12,7 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class GameBoardTest {
+public class PlayingGameBoardTest {
 
     @Mock private Squares xSquares;
     @Mock private Squares oSquares;
@@ -20,7 +20,7 @@ public class GameBoardTest {
 
     @Test
     public void addsSquareToXSquaresWhenCurrentPlayerIsX() throws Exception {
-        GameBoard board = new GameBoard(xSquares, oSquares, events);
+        PlayingGameBoard board = new PlayingGameBoard(xSquares, oSquares, events);
         board.currentPlayer(Player.X);
 
         board.takeSquare(Square.CENTER);
@@ -30,7 +30,7 @@ public class GameBoardTest {
 
     @Test
     public void addsSquareToOSquaresWhenCurrentPlayerIsO() throws Exception {
-        GameBoard board = new GameBoard(xSquares, oSquares, events);
+        PlayingGameBoard board = new PlayingGameBoard(xSquares, oSquares, events);
         board.currentPlayer(Player.O);
 
         board.takeSquare(Square.CENTER);
@@ -40,7 +40,7 @@ public class GameBoardTest {
 
     @Test
     public void sendsMoveEventWhenSquareIsTaken() throws Exception {
-        GameBoard board = new GameBoard(xSquares, oSquares, events);
+        PlayingGameBoard board = new PlayingGameBoard(xSquares, oSquares, events);
         board.currentPlayer(Player.X);
 
         board.takeSquare(Square.LEFT_BOTTOM);
