@@ -149,3 +149,6 @@ And here is the magic... the EndGameBoard doesn't have to make any decisions. It
 
 ## Back to the end to end test
 Time to wire everything up.
+
+And now the final step... prevent moves being made after a draw.
+

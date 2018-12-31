@@ -22,4 +22,13 @@ public class EndGameListenerTest {
 
         verify(gameStateAware).gameEnded();
     }
+
+    @Test
+    public void tellsStateAwareGameBoardGameHasEndedWhenGamesEndsInDraw() {
+        EndGameListener listener = new EndGameListener(gameStateAware);
+
+        listener.draw();
+
+        verify(gameStateAware).gameEnded();
+    }
 }

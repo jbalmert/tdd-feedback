@@ -26,7 +26,7 @@ public class EndGameListener implements GameEvents {
 
     @Override
     public void draw() {
-
+        gameStateAware.gameEnded();
     }
 
     @Override
