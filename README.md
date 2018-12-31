@@ -143,3 +143,9 @@ Once the game has ended in a draw or a win, no new moves should be accepted.  In
 **delegatesToPlayingGameBoardByDefault** Another simple test... pattern emerging :-).
 **switchesPermanentlyToEndGameBoardWhenGameEndedEventReceived** very straightforward test and simple implementation.  Continuing the trend.
 
+## Unit test of EndGameBoard
+And here is the magic... the EndGameBoard doesn't have to make any decisions. It's only job is to reject incoming requests.
+**onlySendsGameOverEventAndDoesNotProcessMoveRequests** easy test and implementation
+
+## Back to the end to end test
+Time to wire everything up.
