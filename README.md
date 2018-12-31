@@ -128,3 +128,11 @@ Up to now, I've only dealt with happy path functionality.  That is, how should t
 **InvalidMovesAreNotAllowed**
 I already limit the moves that can be made to 9 (technically 10 if a client decided to send null).  I want to prove that a square can only be taken once during a game.  When an attempt to take a square more than once happens, I want an invalidMove event to occur.  The event should include the player and square.
 I decided the point to validate a move is between TicTacToe and GameBoard.  To insert something between them, I renamed GameBoard -> PlayingGameBoard and made a GameBoard interface.  Now TicTacToe depends on the GameBoard interface and PlayingGameBoard is the implementation.  To insert something between them, I created GameBoardValidation which may delegate to PlayingGameBoard if the current move is valid.  Otherwise it will send the invalidMove event and stop processing.  It defers to MoveValidator to determine if a move is valid.
+
+## Scenario 5
+**NoMovesAcceptedAfterGameOver**
+Once the game has ended in a draw or a win, no new moves should be accepted.  In keeping with making minimal changes to existing code, I'm looking for a seam to add a new object to handle the responsibility rather modifying existing objects.  One thing to note is that I've built up an event infrastructure.  I know exactly when a game has been won or gone into a draw.  I can make my own client to listen the events.  I'll still want the client to have their own listener, so I'll need to add an event broadcaster.  Once I've received the event, I want to change the system so that any attempt to take a square results in a gameOver event.  Like the previous scenario, the higher up I do this the cleaner the implementation will be.  What I need is an alternate version of the GameBoard that only sends gameOver events when it is called.
+
+## Unit test of GameEventBroadcaster
+**sendsEventToEachRegisteredListener** This test is rather straightforward.  I don't see anything else I need to do to prove this class does what it needs to do.
+
