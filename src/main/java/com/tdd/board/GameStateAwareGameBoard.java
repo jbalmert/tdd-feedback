@@ -3,7 +3,7 @@ package com.tdd.board;
 public class GameStateAwareGameBoard implements GameStateAware, GameBoard {
     GameBoard currentBoard;
     GameBoard endGameBoard;
-    public GameStateAwareGameBoard(PlayingGameBoard playingGameBoard, EndGameBoard endGameBoard) {
+    public GameStateAwareGameBoard(GameBoard playingGameBoard, EndGameBoard endGameBoard) {
         this.currentBoard = playingGameBoard;
         this.endGameBoard = endGameBoard;
     }

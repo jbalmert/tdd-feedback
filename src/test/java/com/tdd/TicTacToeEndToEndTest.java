@@ -24,6 +24,7 @@ public class TicTacToeEndToEndTest {
     @Mock
     private GameEvents events;
 
+
     TicTacToe game;
 
     private Solutions buildValidSolutions() {
@@ -42,23 +43,29 @@ public class TicTacToeEndToEndTest {
     @Before
     public void configureGame() {
         Solutions solutions = buildValidSolutions();
-        GameEvaluator gameEvaluator = new GameEvaluator(events, solutions);
+        GameEventBroadcaster eventBroadcaster = new GameEventBroadcaster();
+        GameEvaluator gameEvaluator = new GameEvaluator(eventBroadcaster, solutions);
         Squares xSquares = new Squares(gameEvaluator);
         Squares oSquares = new Squares(gameEvaluator);
         PlayerToggle playerToggle = new PlayerToggle();
         PlayerBroadcaster playerBroadcaster = new PlayerBroadcaster();
         PlayerTracker playerTracker = new PlayerTracker(playerToggle, playerBroadcaster);
-        PlayingGameBoard board = new PlayingGameBoard(xSquares, oSquares, events);
+        PlayingGameBoard board = new PlayingGameBoard(xSquares, oSquares, eventBroadcaster);
         MoveValidator moveValidator = new MoveValidator();
-        GameBoardValidation gameBoardValidation = new GameBoardValidation(moveValidator, board, events);
+        GameBoardValidation gameBoardValidation = new GameBoardValidation(moveValidator, board, eventBroadcaster);
+        EndGameBoard endGameBoard = new EndGameBoard(eventBroadcaster);
+        GameStateAwareGameBoard gameStateAwareGameBoard = new GameStateAwareGameBoard(gameBoardValidation, endGameBoard);
+        EndGameListener listener = new EndGameListener(gameStateAwareGameBoard);
+        eventBroadcaster.register(events);
+        eventBroadcaster.register(listener);
         playerBroadcaster.register(board);
         playerBroadcaster.register(gameEvaluator);
         playerBroadcaster.register(gameBoardValidation);
-        game = new TicTacToe(gameBoardValidation, playerTracker);
+        game = new TicTacToe(gameStateAwareGameBoard, playerTracker);
     }
 
     @Test
-    public void XWinsAGame() throws Exception {
+    public void XWinsAGame() {
         game.place(CENTER);
         game.place(RIGHT_TOP);
         game.place(MIDDLE_TOP);
