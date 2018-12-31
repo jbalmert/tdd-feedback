@@ -138,3 +138,8 @@ Once the game has ended in a draw or a win, no new moves should be accepted.  In
 
 ## Unit test of EndGameListener
 **tellsStateAwareGameBoardGameHasEndedWhenAPlayerWins** Another straightforward test.
+
+## Unit test of GameStateAwareGameBoard
+**delegatesToPlayingGameBoardByDefault** Another simple test... pattern emerging :-).
+**switchesPermanentlyToEndGameBoardWhenGameEndedEventReceived** very straightforward test and simple implementation.  Continuing the trend.
+
