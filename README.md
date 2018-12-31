@@ -136,3 +136,5 @@ Once the game has ended in a draw or a win, no new moves should be accepted.  In
 ## Unit test of GameEventBroadcaster
 **sendsEventToEachRegisteredListener** This test is rather straightforward.  I don't see anything else I need to do to prove this class does what it needs to do.
 
+## Unit test of EndGameListener
+**tellsStateAwareGameBoardGameHasEndedWhenAPlayerWins** Another straightforward test.

@@ -39,4 +39,11 @@ public class GameEventBroadcaster implements GameEvents{
             events.draw();
         }
     }
+
+    @Override
+    public void gameOver() {
+        for (GameEvents events : eventsList) {
+            events.gameOver();
+        }
+    }
 }

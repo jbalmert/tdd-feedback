@@ -7,4 +7,5 @@ public interface GameEvents {
     void invalidMove(Player player, Square square);
     void wins(Player player);
     void draw();
+    void gameOver();
 }

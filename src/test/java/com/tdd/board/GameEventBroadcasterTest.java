@@ -26,14 +26,17 @@ public class GameEventBroadcasterTest {
         broadcaster.draw();
         broadcaster.wins(Player.O);
         broadcaster.invalidMove(Player.X, Square.CENTER);
+        broadcaster.gameOver();
 
         verify(gameEvents1).move(Player.X, Square.CENTER);
         verify(gameEvents1).draw();
         verify(gameEvents1).wins(Player.O);
         verify(gameEvents1).invalidMove(Player.X, Square.CENTER);
+        verify(gameEvents1).gameOver();
         verify(gameEvents2).move(Player.X, Square.CENTER);
         verify(gameEvents2).draw();
         verify(gameEvents2).wins(Player.O);
         verify(gameEvents2).invalidMove(Player.X, Square.CENTER);
+        verify(gameEvents2).gameOver();
     }
 }

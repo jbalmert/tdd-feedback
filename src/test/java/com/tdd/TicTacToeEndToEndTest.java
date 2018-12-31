@@ -129,4 +129,22 @@ public class TicTacToeEndToEndTest {
         inOrder.verify(events).invalidMove(Player.O, CENTER);
     }
 
+    @Test
+    public void movesAreNotAllowedAfterSomeoneWins() {
+        game.place(CENTER);
+        game.place(RIGHT_TOP);
+        game.place(MIDDLE_TOP);
+        game.place(LEFT_TOP);
+        game.place(MIDDLE_BOTTOM);
+        game.place(RIGHT_BOTTOM);
+
+        InOrder inOrder = inOrder(events);
+        inOrder.verify(events).move(Player.X, CENTER);
+        inOrder.verify(events).move(Player.O, RIGHT_TOP);
+        inOrder.verify(events).move(Player.X, MIDDLE_TOP);
+        inOrder.verify(events).move(Player.O, LEFT_TOP);
+        inOrder.verify(events).move(Player.X, MIDDLE_BOTTOM);
+        inOrder.verify(events).wins(Player.X);
+        inOrder.verify(events).gameOver();
+    }
 }
