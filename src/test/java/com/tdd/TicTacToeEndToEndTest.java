@@ -49,9 +49,12 @@ public class TicTacToeEndToEndTest {
         PlayerBroadcaster playerBroadcaster = new PlayerBroadcaster();
         PlayerTracker playerTracker = new PlayerTracker(playerToggle, playerBroadcaster);
         PlayingGameBoard board = new PlayingGameBoard(xSquares, oSquares, events);
+        MoveValidator moveValidator = new MoveValidator();
+        GameBoardValidation gameBoardValidation = new GameBoardValidation(moveValidator, board, events);
         playerBroadcaster.register(board);
         playerBroadcaster.register(gameEvaluator);
-        game = new TicTacToe(board, playerTracker);
+        playerBroadcaster.register(gameBoardValidation);
+        game = new TicTacToe(gameBoardValidation, playerTracker);
     }
 
     @Test

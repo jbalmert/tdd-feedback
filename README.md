@@ -127,3 +127,4 @@ Up to now, I've only dealt with happy path functionality.  That is, how should t
 ## Scenario 4
 **InvalidMovesAreNotAllowed**
 I already limit the moves that can be made to 9 (technically 10 if a client decided to send null).  I want to prove that a square can only be taken once during a game.  When an attempt to take a square more than once happens, I want an invalidMove event to occur.  The event should include the player and square.
+I decided the point to validate a move is between TicTacToe and GameBoard.  To insert something between them, I renamed GameBoard -> PlayingGameBoard and made a GameBoard interface.  Now TicTacToe depends on the GameBoard interface and PlayingGameBoard is the implementation.  To insert something between them, I created GameBoardValidation which may delegate to PlayingGameBoard if the current move is valid.  Otherwise it will send the invalidMove event and stop processing.  It defers to MoveValidator to determine if a move is valid.
